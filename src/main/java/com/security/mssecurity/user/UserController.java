@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -85,4 +87,28 @@ public class UserController {
 		service.save(user);
 		return ResponseEntity.ok().build();
 	}
+	
+	
+	/**
+	 * 
+	 * @param ID and User
+	 * @param User
+	 * @throws ExecutionException
+	 * @throws InterruptedException
+	 */
+	@PutMapping("/users/{id}")
+    public void update(@PathVariable String id,  @RequestBody User obj) throws ExecutionException, InterruptedException {
+		service.update(id, obj);
+	}
+	
+	
+	/**
+	 * 
+	 * @param ID
+	 */
+	@DeleteMapping("/users/{id}")
+    public void delete(@PathVariable String id){
+		service.delete(id);
+	}
+	
 }

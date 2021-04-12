@@ -113,5 +113,33 @@ public class UserService {
 //		System.out.print(url);
 
 	}
+	
+	
+	/**
+	 * 
+	 * @param ID and User
+	 * @param User
+	 * @throws ExecutionException
+	 * @throws InterruptedException
+	 */
+	public void update(String id, User obj) throws ExecutionException, InterruptedException{
+		DocumentReference docRef = (DocumentReference) FirestoreClient.getFirestore().collection(COLLECTION_NAME).document(id);
+		ApiFuture<WriteResult> update = docRef.update(
+                "name", obj.getName(),
+                "password", obj.getPassword(),
+                "enable", obj.getEnable(),
+                "role", obj.getRole()
+        );
+	}
+	
+	
+	/**
+	 * 
+	 * @param ID
+	 */
+	public void delete(String id) {
+		DocumentReference docRef = (DocumentReference) FirestoreClient.getFirestore().collection(COLLECTION_NAME).document(id);
+		docRef.delete();
+	}
 
 }
