@@ -82,6 +82,12 @@
 		    <version>2.3.2</version>
 		</dependency>		
 		
+		<dependency>
+		  <groupId>org.apache.httpcomponents</groupId>
+		  <artifactId>httpclient</artifactId>
+		  <scope>test</scope>
+		</dependency>
+		
 		<!-- End Insert -->
 	</dependencies>
 
